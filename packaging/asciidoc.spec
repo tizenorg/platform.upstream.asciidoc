@@ -6,13 +6,10 @@ License:        GPL-2.0+
 Group:          Development/Tools/Doc Generators
 Requires:       python >= 2.3 python-xml
 Requires:       docbook-xsl-stylesheets
-Recommends:     dblatex
 # a2x needs /usr/bin/xsltproc
 Recommends:     libxslt
 Url:            http://www.methods.co.nz/asciidoc/
 Source0:        %{name}-%{version}.tar.gz
-Patch0:         asciidoc-vim-fix.diff
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 
 %description
@@ -30,7 +27,6 @@ This package contains examples and documetns of asciidoc.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 
@@ -55,11 +51,11 @@ install -m 0644 vim/ftdetect/* $RPM_BUILD_ROOT%{_datadir}/vim/site/ftdetect
 
 %files
 %defattr(-,root,root)
+%license COPYRIGHT
 %config /etc/asciidoc
 %{_datadir}/asciidoc
 %{_bindir}/*
 %{_datadir}/vim
 %doc %{_mandir}/man1/*
-%doc COPYRIGHT
 
 %changelog
