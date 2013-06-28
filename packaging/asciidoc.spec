@@ -10,6 +10,7 @@ Requires:       docbook-xsl-stylesheets
 Recommends:     libxslt
 Url:            http://www.methods.co.nz/asciidoc/
 Source0:        %{name}-%{version}.tar.gz
+Source1001: 	asciidoc.manifest
 BuildArch:      noarch
 
 %description
@@ -27,6 +28,7 @@ This package contains examples and documetns of asciidoc.
 
 %prep
 %setup -q
+cp %{SOURCE1001} .
 
 %build
 
@@ -50,6 +52,7 @@ install -m 0644 vim/syntax/* $RPM_BUILD_ROOT%{_datadir}/vim/site/syntax
 install -m 0644 vim/ftdetect/* $RPM_BUILD_ROOT%{_datadir}/vim/site/ftdetect
 
 %files
+%manifest %{name}.manifest
 %defattr(-,root,root)
 %license COPYRIGHT
 %config /etc/asciidoc
